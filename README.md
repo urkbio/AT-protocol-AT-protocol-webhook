@@ -24,6 +24,13 @@ cd AT-protocol-webhook
 
 2. 安装依赖：
 ```bash
+# 创建虚拟环境
+python3 -m venv venv
+
+# 激活虚拟环境
+source venv/bin/activate
+
+# 安装依赖
 pip install -r requirements.txt
 ```
 
@@ -39,15 +46,18 @@ cp .env.example .env
 
 ```bash
 python main.py
+
+# 后台运行
+nohup ./venv/bin/python3 main.py >> /var/log/nostr-relay.log 2>&1 &
 ```
 
-服务将在 `http://localhost:8000` 启动。
+服务将在 `http://localhost:7361` 启动。
 
 ## 配置 Memos Webhook
 
 1. 在 Memos 设置中找到 Webhook 配置部分
 2. 添加新的 Webhook
-3. 输入你的服务URL：`http://你的服务器地址:8000/webhook`
+3. 输入你的服务URL：`http://你的服务器地址:7361/webhook`
 
 ## API 端点
 
